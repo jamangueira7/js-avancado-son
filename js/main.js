@@ -4,14 +4,14 @@ var list = [
     {"desc": "meat", "amount": "1", "value": "15.00"}
 ];
 
-function gettotal(list) {
+function getTotal(list) {
     var total = 0;
 
     for (var key in list) {
         total += list[key].value * list[key].amount;
     }
 
-    return total;
+    document.getElementById("totalValue").innerHTML = formatValue(total);
 }
 
 function setlist(list) {
@@ -36,6 +36,7 @@ function setlist(list) {
 
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
+    getTotal(list);
 }
 
 function formatDesc (desc) {
