@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <img alt="app" src=".github/aplicacao2.PNG" width="150px" height="75px">
+  <img alt="app" src=".github/aplicacao2.PNG" width="450px" height="250px">
 </p>
 
 <p align="center">
-  <img alt="app" src=".github/aplicacao3.PNG" width="300px" height="150px">
+  <img alt="app" src=".github/aplicacao3.PNG" width="500px" height="300px">
 </p>
 
 ## Curso de JavaScript avançado da School of Net
