@@ -30,7 +30,7 @@ function setlist(list) {
             '                    <td>'+ formatDesc(list[key].desc) +'</td>\n' +
             '                    <td>'+ list[key].amount +'</td>\n' +
             '                    <td>'+ formatValue(list[key].value) +'</td>\n' +
-            '                    <td><button class="btn btn-default" onclick="setUpdate('+ key +')">Edit</button><button class="btn btn-default" onclick="resetForm('+ key +')">Delete</button></td>\n' +
+            '                    <td><button class="btn btn-default" onclick="setUpdate('+ key +')">Edit</button><button class="btn btn-default" onclick="deleteData('+ key +')">Delete</button></td>\n' +
             '                </tr>';
     }
 
@@ -74,6 +74,8 @@ function setUpdate(id) {
 
     document.getElementById("btnUpdate").style.display = "inline-block";
     document.getElementById("btnAdd").style.display = "none";
+
+    document.getElementById("inputIDUpdate").innerHTML = '<input type="hidden" id="idUpdate" value="'+id+'">'
 }
 
 function resetForm() {
@@ -82,9 +84,38 @@ function resetForm() {
     document.getElementById("amount").value = "";
     document.getElementById("value").value = "";
 
-
     document.getElementById("btnUpdate").style.display = "none";
     document.getElementById("btnAdd").style.display = "inline-block";
+
+    document.getElementById("inputIDUpdate").innerHTML = "";
 }
 
+function updateData() {
+    var id = document.getElementById("idUpdate").value;
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+
+    list[id] = { "desc": desc, "amount": amount, "value": value }
+
+    resetForm();
+    setlist(list);
+
+}
+
+function deleteData (id) {
+    if(confirm("Delete this item?")){
+        if(id === list.length -1) {
+            list.pop();
+        } else if (id === 0) {
+            list.shift();
+        } else {
+            var arrAuxInit = list.slice(0, id);
+            var arrAuxEnd = list.slice(id + 1);
+            list = arrAuxInit.concat(arrAuxEnd);
+        }
+
+        setlist(list);
+    }
+}
 setlist(list);
